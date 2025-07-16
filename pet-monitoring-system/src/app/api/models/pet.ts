@@ -19,5 +19,4 @@ const PetSchema = new Schema({
 
     //todo: Schedules and History (Vet info: When was added).
 })
-
 export const Pet = models.Pet || mongoose.model('Pet', PetSchema);
