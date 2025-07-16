@@ -7,7 +7,7 @@ export const GET = async() => {
     try{
         const pets = await Pet.find();
         return NextResponse.json(pets);
-    }catch(error:unknown){
+    } catch(error:unknown){
         throw error;
     }
 }
