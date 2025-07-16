@@ -5,11 +5,11 @@ if(!MONGO_URI){
     throw new Error("Please define the MONGO_URI environment variable")
 }
 
-export async function dbConnect(){
+export const dbConnect = async (): Promise<void> => {
     try{
-        await mongoose.connect(MONGO_URI);
-    } catch(error) {
-        console.log(error);
+        mongoose.connect(MONGO_URI);
+    }catch(error: unknown){
+        console.log(error)
         throw error;
     }
 }
