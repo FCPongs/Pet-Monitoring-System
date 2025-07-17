@@ -5,7 +5,8 @@ import { Vet } from "@/models/vets/vet";
 export const GET = async () =>{
     await connectDb;
     try{
-        return NextResponse.json(Vet.find);
+        const vets = await Vet.find();
+        return NextResponse.json(vets);
     }catch(error:unknown){
         throw error;
     }
