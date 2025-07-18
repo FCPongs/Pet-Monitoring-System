@@ -2,12 +2,28 @@ import { NextRequest, NextResponse } from "next/server";
 import { connectDb } from "@/lib/connectMongodb";
 import { Pet } from "../models/pet";
 
-export const GET = async() => {
+export const GET = async () => {
     await connectDb(); //? Connect to Database (Mongoose)
-    try{
+    try {
         const pets = await Pet.find();
         return NextResponse.json(pets);
-    } catch(error:unknown){
+    } catch (error: unknown) {
         throw error;
+    }
+}
+export const POST = async (req: NextRequest) => {
+    await connectDb(); //? Connect to Database (Mongoose)
+    try {
+        const pet = await req.json();
+        await Pet.create(pet);
+        return NextResponse.json(
+            { message: "Pet created", data: pet },
+            { status: 201 }
+        );
+    } catch (error: unknown) {
+        return NextResponse.json(
+            { message: "Failed to create pet", error},
+            {status: 500}
+        )
     }
 }
