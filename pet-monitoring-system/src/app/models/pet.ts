@@ -15,6 +15,9 @@ const PetSchema = new Schema({
     },
     breed:{
         type: String
+    },
+    vet: {
+        type: String
     }
 
     //todo: Schedules and History (Vet info: When was added).

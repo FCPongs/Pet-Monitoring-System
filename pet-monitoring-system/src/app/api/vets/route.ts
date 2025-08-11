@@ -1,6 +1,6 @@
 import { connectDb } from "@/lib/connectMongodb";
 import { NextRequest, NextResponse } from "next/server";
-import { Vet } from "@/models/vets/vet";
+import { Vet } from "@/app/models/vet";
 
 export const GET = async () => {
     await connectDb;
