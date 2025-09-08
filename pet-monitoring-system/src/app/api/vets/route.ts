@@ -23,7 +23,7 @@ export const POST = async (req: NextRequest) => {
         )
     } catch (error: unknown) {
         return NextResponse.json(
-            {message: "Failed to add vet", error: error}
+            { message: "Failed to add vet", error: error }
         )
     }
 }

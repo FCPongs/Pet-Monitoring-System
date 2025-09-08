@@ -1,9 +1,21 @@
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
+
 export default function Home() {
   return (
     <>
-        <div className="w-full h-[100vh] text-2xl font-bold flex items-center bg-blue-100 justify-center">Pet Monitoring System</div>
-        <div></div>
+      <div className="flex flex-col gap-4 w-full h-[100vh] bg-blue-100 justify-center items-center">
+        <div className="text-2xl font-bold">
+          Pet Monitoring System
+        </div>
+        <div>
+          <Link href={"/pages/pet/addPet"}>
+            <Button className="">
+              Add Pet
+            </Button>
+          </Link>
+        </div>
+      </div>
     </>
-
   );
 }

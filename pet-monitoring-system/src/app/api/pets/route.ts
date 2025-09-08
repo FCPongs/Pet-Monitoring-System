@@ -22,8 +22,8 @@ export const POST = async (req: NextRequest) => {
         );
     } catch (error: unknown) {
         return NextResponse.json(
-            { message: "Failed to create pet", error},
-            {status: 500}
+            { message: "Failed to create pet", error },
+            { status: 500 }
         )
     }
 }
