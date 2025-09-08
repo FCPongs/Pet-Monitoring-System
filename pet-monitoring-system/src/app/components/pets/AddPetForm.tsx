@@ -18,7 +18,7 @@ export default function AddPetForm() {
     const form = useForm({
         defaultValues: {
             name: "",
-            age: undefined,
+            age: "",
             animalType: "",
             breed: "",
             vet: ""
@@ -111,7 +111,7 @@ export default function AddPetForm() {
                             )}
                         />
                     </div>
-                    <Button type="submit" className='mt-5 hover'>Submit</Button>
+                    <Button type="submit" className='mt-5 cursor-pointer'>Submit</Button>
                 </form>
             </Form>
 

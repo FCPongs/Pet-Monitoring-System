@@ -8,10 +8,15 @@ export default function Home() {
         <div className="text-2xl font-bold">
           Pet Monitoring System
         </div>
-        <div>
+        <div className="flex gap-5">
           <Link href={"/pages/pet/addPet"}>
             <Button className="">
               Add Pet
+            </Button>
+          </Link>
+          <Link href={"/pages/vet/addVet"}>
+            <Button className="">
+              Add Vet
             </Button>
           </Link>
         </div>
