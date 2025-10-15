@@ -26,9 +26,8 @@ export default function AddVetForm() {
     });
 
     const onSubmit = (data: Vet) => {
-
+        
     }
-
     return (
         <>
             <Form {...form}>
