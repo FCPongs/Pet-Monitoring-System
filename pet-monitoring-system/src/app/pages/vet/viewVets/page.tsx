@@ -6,7 +6,7 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IdCard, List } from "lucide-react";
 import { useState } from "react";
 export default function VetsPage() {
-    const vets = useVets();
+    const { data } = useVets();
     const [view, setView] = useState<string>("Card");
     return (
         <>
@@ -26,8 +26,8 @@ export default function VetsPage() {
 
             {view === "Card" ?
                 (
-                    <div className="flex p-5">
-                        {vets.map((vets) => (
+                    <div className="flex p-5 gap-2">
+                        {data?.map((vets) => (
                             <div className="w-150">
                                 <VetCard name={String(vets.name)} doctor={String(vets.doctor)} location={String(vets.location)} />
                             </div>

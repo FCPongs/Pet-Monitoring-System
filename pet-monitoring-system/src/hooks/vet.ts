@@ -8,7 +8,7 @@ import axios from "axios";
 export function useVets() {
     return useQuery({
         queryKey: ['vet'],
-        queryFn: async () => {
+        queryFn: async (): Promise<Vet[]> => {
             const response = await axios.get("/api/vets")
             return response.data;
         }
@@ -26,7 +26,7 @@ export function useVet(id: string) {
 export function useAddVets() {
     return useMutation({
         mutationFn: async (data: Vet): Promise<Vet> => {
-            const response = await axios.post("api/vets", data)
+            const response = await axios.post("/api/vets", data)
             return response.data;
         }
     })

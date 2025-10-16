@@ -14,8 +14,10 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button';
+import { useAddVets } from '@/hooks/vet';
 
 export default function AddVetForm() {
+    const {mutate} = useAddVets();
     const form = useForm({
         defaultValues: {
             name: "",
@@ -26,7 +28,7 @@ export default function AddVetForm() {
     });
 
     const onSubmit = (data: Vet) => {
-        
+        mutate(data);
     }
     return (
         <>
