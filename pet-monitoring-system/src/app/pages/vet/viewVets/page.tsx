@@ -26,9 +26,9 @@ export default function VetsPage() {
 
             {view === "Card" ?
                 (
-                    <div className="flex p-5 gap-2">
+                    <div className="flex">
                         {data?.map((vets) => (
-                            <div className="w-150">
+                            <div className="w-150 p-5">
                                 <VetCard name={String(vets.name)} doctor={String(vets.doctor)} location={String(vets.location)} />
                             </div>
                         ))}
