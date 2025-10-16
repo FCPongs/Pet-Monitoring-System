@@ -1,20 +1,44 @@
 
 'use client';
 import { useVets } from "@/hooks/vet";
+import VetCard from "@/app/components/vets/VetCard";
+import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
+import { IdCard, List } from "lucide-react";
+import { useState } from "react";
 export default function VetsPage() {
     const vets = useVets();
-
+    const [view, setView] = useState<string>("Card");
     return (
         <>
-            <div>
-                {vets.map((vet) => (
-                    <div key={vet.name}>
-                        <div>Name: {vet.name}</div>
-                        <div>Doctor: {vet.doctor}</div>
-                        <div>Location: {vet.location}</div>
-                    </div>
-                ))}
+            <div className="flex justify-end p-5 w-full">
+                <ToggleGroup type="single">
+                    <ToggleGroupItem onClick={() => setView("Card")} className="h-10 w-20 cursor-pointer" value="Card">
+                        <IdCard className="!h-7 !w-7" />
+                    </ToggleGroupItem>
+                    <ToggleGroupItem onClick={() => setView("List")} className="h-10 w-20 cursor-pointer" value="b">
+                        <List className="!h-7 !w-7" />
+                    </ToggleGroupItem>
+                </ToggleGroup>
             </div>
+            <div className="p-5 font-bold text-xl">
+                Vets:
+            </div>
+
+            {view === "Card" ?
+                (
+                    <div className="flex p-5">
+                        {vets.map((vets) => (
+                            <div className="w-150">
+                                <VetCard name={String(vets.name)} doctor={String(vets.doctor)} location={String(vets.location)} />
+                            </div>
+                        ))}
+                    </div>
+                ) :
+                (
+                    <div className="p-5">
+                        Show in list
+                    </div>
+                )}
         </>
     )
 }

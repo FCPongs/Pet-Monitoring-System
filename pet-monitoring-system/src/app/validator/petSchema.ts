@@ -2,6 +2,7 @@ import * as z from "zod";
 
 //** Zod schema: Runtime object (exists when your code is running and can validate data)
 const petValidate = z.object({
+    _id: z.string().optional(),
     name: z.string().min(1, "Please enter pet's name"),
     age: z.string().optional()
         .refine((val) => !isNaN(Number(val)), {
