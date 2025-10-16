@@ -6,7 +6,7 @@ import { useState } from "react";
 import PetCard from "../../../components/pets/PetCard";
 export default function PetsPage() {
     const [view, setView] = useState<string>("Card");
-    const pet = usePets();
+    const {data: pet} = usePets();
 
     return (
         <>
@@ -26,7 +26,7 @@ export default function PetsPage() {
             {view === "Card" ?
                 (
                     <div className="flex">
-                        {pet.map(pets => (
+                        {pet?.map(pets => (
                             <div className="w-150 p-5" key={pets._id}>
                                 <PetCard name={pets.name} age={String(pets.age)} type={String(pets.animalType)} breed={String(pets.breed)} />
                             </div>

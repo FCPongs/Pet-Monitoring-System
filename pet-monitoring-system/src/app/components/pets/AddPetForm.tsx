@@ -13,8 +13,10 @@ import {
 } from "@/components/ui/form"
 import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button';
+import { useAddPets } from '@/hooks/pet';
 
 export default function AddPetForm() {
+    const { mutate } = useAddPets();
     const form = useForm({
         defaultValues: {
             name: "",
@@ -28,6 +30,7 @@ export default function AddPetForm() {
 
     const onSubmit = async (data: Pet) => {
         console.log(`Data submitted: ${data}`)
+        mutate(data);
     }
 
     return (
