@@ -6,18 +6,19 @@ const PetSchema = new Schema({
         type: String,
         required: [true, "Please enter a name"]
     },
-    age:{
+    age: {
         type: Number,
     },
-    animalType:{
+    animalType: {
         type: String,
         required: [true, "Please indicate what animal type."]
     },
-    breed:{
+    breed: {
         type: String
     },
     vet: {
-        type: String
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Vet",
     }
 
     //todo: Schedules and History (Vet info: When was added).
