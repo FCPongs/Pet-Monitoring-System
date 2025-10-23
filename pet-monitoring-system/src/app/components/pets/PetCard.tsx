@@ -8,7 +8,7 @@ interface PetCardProps {
     age: string;
     type: string;
     breed: string;
-    vet?: object;
+    vet?: string;
 }
 export default function PetCard({ name, age, type, breed, vet }: PetCardProps) {
     return (

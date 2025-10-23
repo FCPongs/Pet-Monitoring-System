@@ -6,11 +6,11 @@ const {Schema, models} = mongoose
 const vetSchema = new mongoose.Schema({
     name:{
         type: String,
-        require: [true, "Please enter clinic's name."]
+        required: [true, "Please enter clinic's name."]
     },
     doctor:{
         type: String,
-        require: [true, "Please enter doctor's name."]
+        required: [true, "Please enter doctor's name."]
     },
 } )
 

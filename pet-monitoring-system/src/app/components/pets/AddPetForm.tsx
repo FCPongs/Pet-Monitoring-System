@@ -5,18 +5,28 @@ import { petValidate, Pet } from '@/app/validator/petSchema';
 import {
     Form,
     FormControl,
-    FormDescription,
     FormField,
     FormItem,
     FormLabel,
     FormMessage,
 } from "@/components/ui/form"
+import {
+    Select,
+    SelectContent,
+    SelectGroup,
+    SelectItem,
+    SelectLabel,
+    SelectTrigger,
+    SelectValue,
+} from "@/components/ui/select"
 import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button';
 import { useAddPets } from '@/hooks/pet';
+import { useVets } from '@/hooks/vet';
 
 export default function AddPetForm() {
     const { mutate } = useAddPets();
+    const { data: vets } = useVets();
     const form = useForm({
         defaultValues: {
             name: "",
@@ -105,16 +115,29 @@ export default function AddPetForm() {
                                 <FormItem>
                                     <FormLabel>Veterinary</FormLabel>
                                     <FormControl>
-                                        <Input
-                                            id="vet"
-                                            placeholder="e.g Makilala Veterinary" {...field} />
+                                        <Select onValueChange={field.onChange}>
+                                            <SelectTrigger className='w-full'>
+                                                <SelectValue placeholder="Select a vet" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                <SelectGroup>
+                                                    <SelectLabel>Vet Clinics</SelectLabel>      
+                                                    {vets?.map((vet)=> (
+                                                        <SelectItem value={vet._id!}>{vet.name}</SelectItem>
+                                                        
+                                                    ))}
+                                                </SelectGroup>
+                                            </SelectContent>
+                                        </Select>
                                     </FormControl>
                                     <FormMessage />
                                 </FormItem>
                             )}
                         />
                     </div>
-                    <Button type="submit" className='mt-5 cursor-pointer'>Submit</Button>
+                    <div className='w-full flex justify-end'>
+                        <Button type="submit" className='mt-5 cursor-pointer'>Submit</Button>
+                    </div>
                 </form>
             </Form>
 
