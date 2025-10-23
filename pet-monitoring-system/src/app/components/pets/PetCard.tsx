@@ -31,6 +31,7 @@ export default function PetCard({ name, age, type, breed, vet }: PetCardProps) {
                     <div className="flex gap-2 w-full justify-end">
                         <Button>View</Button>
                         <Button>Edit</Button>
+                        <Button className="cursor-pointer">Add Schedule</Button>
                     </div>
                 </CardFooter>
             </Card>

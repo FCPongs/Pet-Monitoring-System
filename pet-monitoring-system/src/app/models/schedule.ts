@@ -21,7 +21,8 @@ const TimeMedicationSchema = new Schema({
 const scheduleSchema = new Schema({
     timeMedication: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "TimeMedication"
+        ref: "TimeMedication",
+        required: true
     },
     startDate: { type: Date, required: true },
     endDate: { type: Date, required: true },

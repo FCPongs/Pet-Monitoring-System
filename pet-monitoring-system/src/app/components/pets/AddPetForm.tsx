@@ -33,14 +33,18 @@ export default function AddPetForm() {
             age: "",
             animalType: "",
             breed: "",
-            vet: ""
+            vet: null,
         },
         resolver: zodResolver(petValidate),
     });
 
     const onSubmit = async (data: Pet) => {
-        console.log(`Data submitted: ${data}`)
-        mutate(data);
+        console.log(`Data submitted: ${data}`);
+        if (data.vet === "no-vet") {
+            mutate({ ...data, vet: null });
+        } else {
+            mutate(data);
+        }
     }
 
     return (
@@ -115,16 +119,16 @@ export default function AddPetForm() {
                                 <FormItem>
                                     <FormLabel>Veterinary</FormLabel>
                                     <FormControl>
-                                        <Select onValueChange={field.onChange}>
+                                        <Select onValueChange={field.onChange} defaultValue="no-vet">
                                             <SelectTrigger className='w-full'>
                                                 <SelectValue placeholder="Select a vet" />
                                             </SelectTrigger>
                                             <SelectContent>
                                                 <SelectGroup>
-                                                    <SelectLabel>Vet Clinics</SelectLabel>      
-                                                    {vets?.map((vet)=> (
+                                                    <SelectLabel>Vet Clinics</SelectLabel>
+                                                    <SelectItem value="no-vet">No vet</SelectItem>
+                                                    {vets?.map((vet) => (
                                                         <SelectItem value={vet._id!}>{vet.name}</SelectItem>
-                                                        
                                                     ))}
                                                 </SelectGroup>
                                             </SelectContent>
