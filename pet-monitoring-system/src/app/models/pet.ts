@@ -20,6 +20,11 @@ const PetSchema = new Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref: "Vet",
         default: null,
+    },
+    schedule: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Schedule",
+        default: null,
     }
 
     //todo: Schedules and History (Vet info: When was added).

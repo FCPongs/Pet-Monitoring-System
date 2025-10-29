@@ -7,20 +7,20 @@ const scheduleSchema = new Schema({
     endDate: { type: Date, required: true },
     defaultMedication: [{
         time: { type: String, required: true },
-        medication: {
+        medication: [{
             medName: { type: String, required: true },
             dosage: { type: String, required: true },
             drugType: { type: String, required: true },
-        }
+        }]
     }],
     customedMedication: [{
         date: { type: [Date], required: true },
         time: { type: String, required: true },
-        medication: {
+        medication: [{
             medName: { type: String, required: true },
             dosage: { type: String, required: true },
             drugType: { type: String, required: true },
-        }
+        }]
     }]
 })
 
