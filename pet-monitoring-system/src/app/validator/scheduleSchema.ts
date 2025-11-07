@@ -10,9 +10,9 @@ const defaultMedicationSchema = z.object({
     medication: z.array(medicationSchema).min(1, "Please add at least 1 medication")
 })
 const customMedicationSchema = z.object({
-  date: z.array(z.string()).min(1, "At least one date is required"),
+  date: z.date(),
   time: z.string().min(1, "Time is required"),
-  medication: z.array(medicationSchema),
+  medication: z.array(medicationSchema).min(1, "Please add at least 1 medication"),
 });
 
 export const schedValidate = z.object(
