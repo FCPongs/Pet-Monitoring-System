@@ -1,5 +1,6 @@
 import * as z from "zod";
 import { vetValidate } from "./vetSchema";
+import { schedValidate } from "./scheduleSchema";
 //** Zod schema: Runtime object (exists when your code is running and can validate data)
 const petValidate = z.object({
     _id: z.string().optional(),
@@ -11,6 +12,7 @@ const petValidate = z.object({
     animalType: z.string().min(1, "Please enter pet's animal type"),
     breed: z.string().optional(),
     vet: z.union([z.string(), vetValidate, z.null()]).optional(),
+    sched: z.union([z.string(), schedValidate, z.null()]).optional(),
 })
 
 //** Typescript type: Compile time
