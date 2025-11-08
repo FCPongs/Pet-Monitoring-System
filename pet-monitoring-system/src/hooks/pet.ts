@@ -33,6 +33,14 @@ export function useAddPets() {
         }
     })
 }
+export function useEditPets(id: string | number) {
+    return useMutation({
+        mutationFn: async (editPet: any): Promise<Pet> => {
+            const response = await axios.patch(`/api/pets/${id}`, editPet)
+            return response.data;
+        }
+    })
+}
 // export async function useAddPets(newPet: Pet) {
 //     try {
 //         const res = await fetch("/api/pets", {
