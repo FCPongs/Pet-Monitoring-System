@@ -50,12 +50,12 @@ export default function NavBar() {
                                 <ul className="grid gap-2">
                                     <li className="cursor-pointer hover:bg-gray-100 rounded-sm p-1">
                                         <NavigationMenuLink asChild>
-                                            <Link href="../pages/pet/addPet">Add Pet</Link>
+                                            <Link href="/pet/addPet">Add Pet</Link>
                                         </NavigationMenuLink>
                                     </li>
                                     <li className="cursor-pointer hover:bg-gray-100 rounded-sm p-1">
                                         <NavigationMenuLink asChild>
-                                            <Link href="#">View Pets</Link>
+                                            <Link href="/pet/viewPets">View Pets</Link>
                                         </NavigationMenuLink>
                                     </li>
                                 </ul>
@@ -69,12 +69,12 @@ export default function NavBar() {
                                 <ul className="grid gap-2">
                                     <li className="cursor-pointer hover:bg-gray-100 rounded-sm p-1">
                                         <NavigationMenuLink asChild>
-                                            <Link href="#">Add Vet</Link>
+                                            <Link href="/vet/addVet">Add Vet</Link>
                                         </NavigationMenuLink>
                                     </li>
                                     <li className="cursor-pointer hover:bg-gray-100 rounded-sm p-1">
                                         <NavigationMenuLink asChild>
-                                            <Link href="#">View Vets</Link>
+                                            <Link href="/vet/viewVets">View Vets</Link>
                                         </NavigationMenuLink>
                                     </li>
                                 </ul>
