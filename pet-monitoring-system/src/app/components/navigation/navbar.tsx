@@ -5,20 +5,20 @@ import {
     NavigationMenuLink,
     NavigationMenuList,
     NavigationMenuTrigger,
-    navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu"
 import Link from "next/link"
 
 export default function NavBar() {
     return (
-        <>
-            <div className="shadow-lg">
-                <NavigationMenu>
-                    <NavigationMenuList className="flex-wrap">
-                        {/* Logo */}
-                        <NavigationMenuItem className="hidden md:block p-4">
-                            Logo
-                        </NavigationMenuItem>
+        <div className="shadow-lg w-full">
+            <div className="flex items-center justify-between w-full px-4">
+
+                {/* Left - Logo */}
+                <div className="p-4">Logo</div>
+
+                {/* Center - Menu */}
+                <NavigationMenu className="!flex flex-1 justify-center">
+                    <NavigationMenuList className="!flex gap-4">
                         {/* Home */}
                         <NavigationMenuItem>
                             <NavigationMenuTrigger>Home</NavigationMenuTrigger>
@@ -39,15 +39,6 @@ export default function NavBar() {
                                             </a>
                                         </NavigationMenuLink>
                                     </li>
-                                    <NavigationMenuLink className="cursor-pointer p-2 rounded-sm hover:bg-gray-100" title="Introduction">
-                                        Re-usable components built using Radix UI and Tailwind CSS.
-                                    </NavigationMenuLink>
-                                    <NavigationMenuLink className="cursor-pointer p-2 rounded-sm hover:bg-gray-100"  title="Installation">
-                                        How to install dependencies and structure your app.
-                                    </NavigationMenuLink>
-                                    <NavigationMenuLink className="cursor-pointer p-2 rounded-sm hover:bg-gray-100"  title="Typography">
-                                        Styles for headings, paragraphs, lists...etc
-                                    </NavigationMenuLink>
                                 </ul>
                             </NavigationMenuContent>
                         </NavigationMenuItem>
@@ -59,7 +50,7 @@ export default function NavBar() {
                                 <ul className="grid gap-2">
                                     <li className="cursor-pointer hover:bg-gray-100 rounded-sm p-1">
                                         <NavigationMenuLink asChild>
-                                            <Link href="#">Add Pet</Link>
+                                            <Link href="../pages/pet/addPet">Add Pet</Link>
                                         </NavigationMenuLink>
                                     </li>
                                     <li className="cursor-pointer hover:bg-gray-100 rounded-sm p-1">
@@ -103,9 +94,13 @@ export default function NavBar() {
                                 </ul>
                             </NavigationMenuContent>
                         </NavigationMenuItem>
+
                     </NavigationMenuList>
                 </NavigationMenu>
+
+                {/* Right section (optional) */}
+                <div className="p-4">Profile</div>
             </div>
-        </>
+        </div>
     )
 }
