@@ -16,9 +16,9 @@ export const POST = async (req: NextRequest) => {
     await connectDb(); //? Connect to Database (Mongoose)
     try {
         const pet = await req.json();
-        await Pet.create(pet);
+        const petCreated = await Pet.create(pet);
         return NextResponse.json(
-            { message: "Pet created", data: pet },
+            { message: "Pet created", data: petCreated },
             { status: 201 }
         );
     } catch (error: unknown) {
