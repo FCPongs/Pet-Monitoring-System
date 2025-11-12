@@ -29,7 +29,7 @@ export function useAddPets() {
     return useMutation({
         mutationFn: async (newPet: Pet): Promise<Pet> => {
             const response = await axios.post("/api/pets", newPet)
-            return response.data;
+            return response.data.data;
         }
     })
 }

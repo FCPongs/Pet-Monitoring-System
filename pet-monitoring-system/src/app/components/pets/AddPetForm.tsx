@@ -23,9 +23,12 @@ import { Input } from "@/components/ui/input"
 import { Button } from '@/components/ui/button';
 import { useAddPets } from '@/hooks/pet';
 import { useVets } from '@/hooks/vet';
+import { toast } from 'sonner';
+import { useRouter } from 'next/navigation';
 
 export default function AddPetForm() {
-    const { mutate } = useAddPets();
+    const route = useRouter();
+    const { mutate, mutateAsync } = useAddPets();
     const { data: vets } = useVets();
     const form = useForm({
         defaultValues: {
@@ -39,11 +42,15 @@ export default function AddPetForm() {
     });
 
     const onSubmit = async (data: Pet) => {
-        console.log(`Data submitted: ${data}`);
+        console.log(`Data submitted: ${JSON.stringify(data)}`);
         if (data.vet === "no-vet") {
             mutate({ ...data, vet: null });
+            toast.error("Pet has not been created");
         } else {
-            mutate(data);
+            const petData = await mutateAsync(data);
+            console.log("Pet ID: "+petData._id);
+            toast.success("Pet Successfully created");
+            //route.push("/pet/viewPets"); // Redirect to specific pet page
         }
     }
 
