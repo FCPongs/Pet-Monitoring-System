@@ -2,23 +2,38 @@ import { Pet } from "@/app/models/pet";
 import { NextResponse } from "next/server";
 import { connectDb } from "@/lib/connectMongodb";
 import { Schedule } from "@/app/models/schedule";
+import { Vet } from "@/app/models/vet";
 interface ParamProps {
-    params: Promise<{ id: string }>;
+  params: Promise<{ id: string }>;
 }
 
 export async function GET(req: Request, { params }: { params: { id: string } }) {
-    const { id } = await params;
-    try {
-        await connectDb();
-        const pet = await Pet.findById(id);
-        return NextResponse.json(pet, { status: 200 })
-    } catch {
-        return NextResponse.json(
-            { message: "Internal server error" },
-            { status: 500 },
-        );
+  const { id } = await params;
+  try {
+    await connectDb();
+    const pet = await Pet.findById(id);
+
+    if (!pet) {
+      return NextResponse.json({ message: "Pet not found" }, { status: 404 });
     }
+
+    if (pet.schedule && pet.schedule.length > 0) {
+      await pet.populate("schedule");
+    }
+    if (pet.vet && pet.vet.length > 0) {
+      await pet.populate("vet");
+    }
+
+    return NextResponse.json(pet, { status: 200 });
+  } catch (err) {
+    console.error("Error fetching pet:", err);
+    return NextResponse.json(
+      { message: "Internal server error" },
+      { status: 500 }
+    );
+  }
 }
+
 
 export async function PATCH(req: Request, { params }: { params: { id: string } }) {
   const { id } = params;

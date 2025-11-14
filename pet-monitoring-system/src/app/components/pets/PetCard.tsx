@@ -31,13 +31,17 @@ export default function PetCard({ id, name, age, type, breed, vet }: PetCardProp
                 </CardContent>
                 <CardFooter>
                     <div className="flex gap-2 w-full justify-end">
-                        <Button>View</Button>
+                        <Button className="cursor-pointer">
+                            <Link href={`/pet/${id}/viewPet`}>
+                            View
+                            </Link>
+                        </Button>
                         <Button>Edit</Button>
                         <Button className="cursor-pointer">
                             <Link href={`/schedule/add/${id}`}>
-                            Add Schedule
+                                Add Schedule
                             </Link>
-                            </Button>
+                        </Button>
                     </div>
                 </CardFooter>
             </Card>
