@@ -16,3 +16,12 @@ export function useAddSched() {
         }
     })
 }
+export function useSched(id: string) {
+    return useQuery({
+        queryKey: [`pets`, id],
+        queryFn: async (): Promise<Sched[]> => {
+            const response = await axios.get(`/api/sched/${id}`)
+            return response.data;
+        }
+    })
+}
