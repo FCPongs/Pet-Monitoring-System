@@ -16,11 +16,11 @@ const PetSchema = new Schema({
     breed: {
         type: String
     },
-    vet: {
+    vet: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Vet",
         default: null,
-    },
+    }],
     schedule: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: "Schedule",
