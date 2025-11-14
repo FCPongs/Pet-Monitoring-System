@@ -14,10 +14,10 @@ export function useVets() {
         }
     })
 }
-export function useVet(id: string) {
+export function useVet(id: string[]) {
     return useQuery({
         queryKey: ['vet', id],
-        queryFn: async (): Promise<Vet> => {
+        queryFn: async (): Promise<Vet[]> => {
             const response = await axios.post("api/vets", id);
             return response.data;
         }
