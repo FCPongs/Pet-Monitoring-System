@@ -43,14 +43,14 @@ export default function AddPetForm() {
 
     const onSubmit = async (data: Pet) => {
         console.log(`Data submitted: ${JSON.stringify(data)}`);
-        if (data.vet === "no-vet") {
+        if (typeof data.vet === "string" && data.vet === "no-vet") {
             mutate({ ...data, vet: null });
             toast.error("Pet has not been created");
         } else {
             const petData = await mutateAsync(data);
             console.log("Pet ID: "+petData._id);
             toast.success("Pet Successfully created");
-            //route.push("/pet/viewPets"); // Redirect to specific pet page
+            route.push(`/pet/${petData._id}/viewPet`); // Redirect to specific pet page
         }
     }
 
