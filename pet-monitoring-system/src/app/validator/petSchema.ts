@@ -12,7 +12,7 @@ const petValidate = z.object({
     animalType: z.string().min(1, "Please enter pet's animal type"),
     breed: z.string().optional(),
     vet: z.union([z.string(), vetValidate, z.null()]).optional(),
-    sched: z.union([z.string(), schedValidate, z.null()]).optional(),
+    schedule: z.array(z.union([z.string(), schedValidate])).optional(),
 })
 
 //** Typescript type: Compile time
