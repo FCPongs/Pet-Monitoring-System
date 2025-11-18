@@ -1,7 +1,16 @@
-export default function ViewSched() {
+import SchedDisplay from "@/app/components/schedules/ScheduleDisplay";
+
+interface PageProps {
+    params: {
+        petId: string;
+    };
+}
+export default async function Page({ params }: PageProps) {
+    const { petId } = await params;
     return (
         <>
-        Correct
+            <SchedDisplay id={String(petId)} />
         </>
-    )
-}//pet-monitoring-system\src\app\schedule\add\[petId]\viewSchedule\page.tsx
+
+    );
+}

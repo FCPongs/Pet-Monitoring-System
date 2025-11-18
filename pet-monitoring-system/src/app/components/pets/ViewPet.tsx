@@ -49,7 +49,7 @@ export default function ViewPet({ id }: viewPetProps) {
                                 </div>
                             ))
                         ) : (
-                            <div>Not found</div>
+                            <div>Not Vet</div>
                         )}
                     </div>
                 </div>
