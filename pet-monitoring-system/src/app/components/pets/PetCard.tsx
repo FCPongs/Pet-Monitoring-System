@@ -38,7 +38,7 @@ export default function PetCard({ id, name, age, type, breed, vet }: PetCardProp
                         </Button>
                         <Button>Edit</Button>
                         <Button className="cursor-pointer">
-                            <Link href={`/schedule/add/${id}`}>
+                            <Link href={`/schedule/${id}/add`}>
                                 Add Schedule
                             </Link>
                         </Button>
