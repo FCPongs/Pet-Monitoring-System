@@ -1,0 +1,27 @@
+
+interface ScheduleCard {
+    id: string | number;
+    name: string;
+    startDate: string;
+    endDate: string;
+}
+export default function ScheduleCard({ id, name, startDate, endDate }: ScheduleCard) {
+    return (
+        <>
+            <div className="rounded-md cursor-pointer !w-full p-5 before:ease relative overflow-hidden border border-[#E1EEBC]  bg-[#E1EEBC] text-black font-semibold shadow-md transition-all before:absolute before:right-0 before:top-0 before:h-full before:w-6 before:translate-x-12 before:rotate-6 before:bg-white before:opacity-30 before:duration-700 hover:shadow-[#90C67C] hover:before:-translate-x-150">
+                {/* Name */}
+                <div>
+                    {name}
+                </div>
+                {/* StartDate */}
+                <div>
+                    {"From: " + startDate}
+                </div>
+                {/* EndDate */}
+                <div>
+                    {"To: " + endDate}
+                </div>
+            </div>
+        </>
+    )
+}
