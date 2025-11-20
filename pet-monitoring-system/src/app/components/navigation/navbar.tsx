@@ -16,7 +16,7 @@ export default function NavBar() {
 
                 {/* Left - Logo */}
                 <Link href={"/"}>
-                    <div className="p-1 mb-1.5">
+                    <div className="p-1 my-1.5">
                         <Image className="object-contain" src="/images/logo.png" alt="Logo" width={80} height={80} />
                     </div>
                 </Link>
