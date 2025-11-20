@@ -4,10 +4,16 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IdCard, List } from "lucide-react";
 import { useState } from "react";
 import PetCard from "@/app/components/pets/PetCard";
+import LoadingLogo from "@/app/components/loading/loadingGif";
 export default function PetsPage() {
     const [view, setView] = useState<string>("Card");
-    const { data: pet } = usePets();
-
+    const { data: pet, isFetching, isPending } = usePets();
+    if (isPending || isFetching)
+        return (
+            <div className="flex w-full justify-center items-center h-full">
+                <LoadingLogo />
+            </div>
+            );
     return (
         <>
             <div className="flex justify-end p-5 w-full">

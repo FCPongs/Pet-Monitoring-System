@@ -48,7 +48,7 @@ export default function AddPetForm() {
             toast.error("Pet has not been created");
         } else {
             const petData = await mutateAsync(data);
-            console.log("Pet ID: "+petData._id);
+            console.log("Pet ID: " + petData._id);
             toast.success("Pet Successfully created");
             route.push(`/pet/${petData._id}/viewPet`); // Redirect to specific pet page
         }
@@ -135,7 +135,7 @@ export default function AddPetForm() {
                                                     <SelectLabel>Vet Clinics</SelectLabel>
                                                     <SelectItem value="no-vet">No vet</SelectItem>
                                                     {vets?.map((vet) => (
-                                                        <SelectItem value={vet._id!}>{vet.name}</SelectItem>
+                                                        <SelectItem key={vet._id!} id={vet._id!} value={vet._id!}>{vet.name}</SelectItem>
                                                     ))}
                                                 </SelectGroup>
                                             </SelectContent>

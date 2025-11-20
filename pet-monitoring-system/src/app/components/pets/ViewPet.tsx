@@ -4,7 +4,7 @@ import { useSched } from "@/hooks/sched";
 import { Button } from "@/components/ui/button";
 import ScheduleCard from "../schedules/ScheduleCard";
 import Link from "next/link";
-import { Input } from "@/components/ui/input";
+import LoadingLogo from "../loading/loadingGif";
 
 interface viewPetProps {
     id: string | number;
@@ -15,8 +15,10 @@ export default function ViewPet({ id }: viewPetProps) {
 
     if (isPending || isFetching)
         return (
-            <div>Loading</div>);
-
+            <div className="flex w-full justify-center items-center h-full">
+                <LoadingLogo />
+            </div>
+            );
     return (
         <>
             <div className="flex !w-full h-[92vh]">
