@@ -18,9 +18,9 @@ export function useAddSched() {
 }
 export function useSched(id: string) {
     return useQuery({
-        queryKey: [`pets`, id],
-        queryFn: async (): Promise<Sched[]> => {
-            const response = await axios.get(`/api/sched/${id}`)
+        queryKey: [`sched`, id],
+        queryFn: async (): Promise<Sched> => {
+            const response = await axios.get(`/api/schedule/${id}`)
             return response.data;
         }
     })

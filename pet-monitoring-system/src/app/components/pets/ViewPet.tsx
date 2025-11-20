@@ -2,6 +2,7 @@ import { usePet } from "@/hooks/pet";
 import { useVet } from "@/hooks/vet";
 import { useSched } from "@/hooks/sched";
 import { Button } from "@/components/ui/button";
+import ScheduleCard from "../schedules/ScheduleCard";
 import Link from "next/link";
 
 interface viewPetProps {
@@ -17,15 +18,20 @@ export default function ViewPet({ id }: viewPetProps) {
 
     return (
         <>
-            <div className="flex !w-full h-full">
-                <div className="flex w-1/2 items-center flex-col gap-5">
-                    <div className="flex gap-5 justify-start">
+            <div className="flex !w-full h-[92vh]">
+                <div className="flex w-1/2 p-5">
+                <div className="flex rounded-lg shadow-xl px-5 flex-col h-full !w-[100%]">
+                <div className="flex justify-start w-full mb-5 text-lg font-semibold">General Information</div>
+                    <div className="flex flex-col">
                         <div>
-                            Pet Name: {data?.name}
+                            Pet Name: 
+                        </div>
+                        <div>
+                            {data?.name}
                         </div>
                     </div>
 
-                    <div className="flex gap-5 justify-start">
+                    <div className="flex gap-5">
                         <div>
                             Animal Type: {data?.animalType}
                         </div>
@@ -43,26 +49,36 @@ export default function ViewPet({ id }: viewPetProps) {
                                 </div>
                             ))
                         ) : (
-                            <div>Not found</div>
+                            <div>Not Vet</div>
                         )}
                     </div>
-
                 </div>
-                <div className="w-1/2 bg-green-100">
-                    <div className="flex flex-col justify-center items-center h-full">
-                        <div>
+                </div>
+                <div className="w-1/2 p-5">
+                    <div className="flex rounded-lg shadow-xl px-5 flex-col h-full !w-[100%]">
+                        <div className="mb-5 text-lg font-semibold">Schedule</div>
+                        <div className="flex justify-center items-start w-[100%]">
                             {Array.isArray(data?.schedule) ?
                                 (
-                                    <div>
+                                    <div className="flex flex-col gap-5 w-[90%]">
                                         {data.schedule.map((sched) => (
                                             typeof sched == "string" ?
                                                 (<div>
                                                     <div>{sched}</div>
                                                 </div>)
                                                 :
-                                                (<div>
-                                                    {sched.name}
-                                                </div>)
+                                                (
+                                                    <div>
+                                                        <ScheduleCard
+                                                            id={String(sched._id)}
+                                                            name={sched.name}
+                                                            startDate={String(sched.startDate)}
+                                                            endDate={String(sched.endDate)}
+                                                        />
+                                                        
+                                                    </div>
+                                                    
+                                                )
                                         ))}
                                     </div>
                                 ) :
@@ -73,11 +89,13 @@ export default function ViewPet({ id }: viewPetProps) {
                                 )
                             }
                         </div>
-                        <Link href={`/schedule/add/${id}/`}>
-                            <Button className="cursor-pointer">
-                                Add Schedule
-                            </Button>
-                        </Link>
+                        <div className="flex justify-end p-5 h-full items-end">
+                            <Link href={`/schedule/${id}/add`}>
+                                <Button className="cursor-pointer">
+                                    Add Schedule
+                                </Button>
+                            </Link>
+                        </div>
 
                     </div>
                 </div>
