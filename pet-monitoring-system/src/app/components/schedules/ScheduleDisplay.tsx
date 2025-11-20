@@ -7,12 +7,12 @@ import 'temporal-polyfill/global';
 import '@schedule-x/theme-default/dist/index.css';
 import { createEventModalPlugin } from '@schedule-x/event-modal';
 import { useEffect } from "react";
-
+import LoadingLogo from "../loading/loadingGif";
 interface SchedDisplayProps {
     id: string;
 }
 export default function SchedDisplay({ id }: SchedDisplayProps) {
-    const { data, isPending } = useSched(id);
+    const { data, isPending, isFetching } = useSched(id);
     const calendar = useNextCalendarApp({
         views: [createViewWeek(), createViewMonthGrid()],
         events: [],
@@ -45,9 +45,12 @@ export default function SchedDisplay({ id }: SchedDisplayProps) {
     },
         [data, calendar]);
 
-    if (isPending || !data?.startDate || !data?.endDate) {
-        return <div>Loading...</div>;
-    }
+    if (isPending || isFetching)
+        return (
+            <div className="flex w-full justify-center items-center h-full">
+                <LoadingLogo />
+            </div>
+            );
     return (
         <div className="flex flex-col items-center p-5">
             <ScheduleXCalendar calendarApp={calendar} />

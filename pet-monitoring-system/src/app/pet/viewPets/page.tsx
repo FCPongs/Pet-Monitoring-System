@@ -4,10 +4,16 @@ import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IdCard, List } from "lucide-react";
 import { useState } from "react";
 import PetCard from "@/app/components/pets/PetCard";
+import LoadingLogo from "@/app/components/loading/loadingGif";
 export default function PetsPage() {
     const [view, setView] = useState<string>("Card");
-    const { data: pet } = usePets();
-
+    const { data: pet, isFetching, isPending } = usePets();
+    if (isPending || isFetching)
+        return (
+            <div className="flex w-full justify-center items-center h-full">
+                <LoadingLogo />
+            </div>
+            );
     return (
         <>
             <div className="flex justify-end p-5 w-full">
@@ -25,9 +31,9 @@ export default function PetsPage() {
             </div>
             {view === "Card" ?
                 (
-                    <div className="flex flex-col">
+                    <div className="flex flex-wrap">
                         {pet?.map(pets => (
-                            <div className="w-150 p-5" key={pets._id}>
+                            <div className="w-120 p-5" key={pets._id}>
                                 <PetCard id={String(pets._id)} name={pets.name} age={String(pets.age)} type={String(pets.animalType)} breed={String(pets.breed)} vet={
                                     typeof pets.vet === "object"
                                         ? pets.vet?.name

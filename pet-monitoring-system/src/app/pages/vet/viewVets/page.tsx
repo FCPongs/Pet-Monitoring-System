@@ -5,9 +5,18 @@ import VetCard from "@/app/components/vets/VetCard";
 import { ToggleGroup, ToggleGroupItem } from "@/components/ui/toggle-group"
 import { IdCard, List } from "lucide-react";
 import { useState } from "react";
+import LoadingLogo from "@/app/components/loading/loadingGif";
+
 export default function VetsPage() {
-    const { data } = useVets();
+    const { data, isPending, isFetching } = useVets();
     const [view, setView] = useState<string>("Card");
+
+    if (isPending || isFetching)
+        return (
+            <div className="flex w-full justify-center items-center h-full">
+                <LoadingLogo />
+            </div>
+        );
     return (
         <>
             <div className="flex justify-end p-5 w-full">
