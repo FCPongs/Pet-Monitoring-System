@@ -109,6 +109,19 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
+* {
+  box-sizing: border-box;
+}
+.sx-react-calendar-wrapper {
+  width: 90vw;
+  max-width: 100vw;
+  height: 800px;
+  max-height: 85vh;
+}
+.sx-event-modal__description {
+  white-space: pre-line !important;
+}
+
 
 @layer base {
   * {
