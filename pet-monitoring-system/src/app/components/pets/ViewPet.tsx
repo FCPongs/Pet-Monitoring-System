@@ -23,7 +23,7 @@ export default function ViewPet({ id }: viewPetProps) {
         <>
             <div className="flex !w-full h-[92vh]">
                 <div className="flex w-1/2 p-5">
-                    <div className="flex gap-5 rounded-lg shadow-xl px-5 flex-col h-full !w-[100%]">
+                    <div key={data?._id} className="flex gap-5 rounded-lg shadow-xl px-5 flex-col h-full !w-[100%]">
                         <div className="flex justify-start w-full mb-5 text-lg font-semibold">General Information</div>
                         <div key={data?._id} className="flex flex-col gap-2">
                             <div className="font-semibold">
@@ -79,8 +79,8 @@ export default function ViewPet({ id }: viewPetProps) {
                                     <div key={data._id} className="flex flex-col gap-5 w-[90%]">
                                         {data.schedule.map((sched) => (
                                             typeof sched == "string" ?
-                                                (<div>
-                                                    <div>{sched}</div>
+                                                (<div key={data._id}>
+                                                    {sched}
                                                 </div>)
                                                 :
                                                 (

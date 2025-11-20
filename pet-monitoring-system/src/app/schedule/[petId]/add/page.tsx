@@ -27,8 +27,11 @@ import { useEffect } from "react";
 import { useAddSched } from "@/hooks/sched";
 import CustomChild from "@/app/components/schedules/CustomChild";
 import { useEditPets } from "@/hooks/pet";
+import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 export default function addSchedule() {
-        const params = useParams();
+    const route = useRouter();
+    const params = useParams();
     const petId = params.petId;
     const [toggle, setToggle] = useState<{ [key: string]: boolean }>({
         start: false,
@@ -43,12 +46,18 @@ export default function addSchedule() {
         resolver: zodResolver(schedValidate),
         defaultValues: {
             timesPerDay: 1,
-            defaultMedication: [],
+            defaultMedication: [
+                {
+                    time: "",
+                    medication: [{ medName: "", dosage: "", drugType: "" }]
+                }
+            ],
         }
     })
     async function onSubmit(data: Sched) {
         const createdSched = await addSchedule(data); // Schedule added
-        console.log("Created sched id:", createdSched.data._id);
+        toast.success("Schedule added succesfully!")
+        route.push(`/pet/${petId}/viewPet`)
         editPet({ schedule: createdSched.data._id }); // This sends an ID
     }
     function setOpen(date: string, value: boolean) {
@@ -187,7 +196,7 @@ export default function addSchedule() {
                                                 <FormControl>
                                                     <Input
                                                         type="number"
-                                                        min={0}
+                                                        min={1}
                                                         placeholder="shadcn"
                                                         {...field}
                                                         onChange={(e) => field.onChange(e.target.valueAsNumber)}
@@ -207,7 +216,6 @@ export default function addSchedule() {
                                 </div>
                             </div>
                             {/* Second Part */}
-
                             <div className="overflow-auto h-[80vh] p-1 w-[70%]">
                                 <div className="text-lg mb-3">Default</div>
                                 <div className="flex flex-col">
@@ -255,4 +263,4 @@ export default function addSchedule() {
             </div>
         </>
     )
-}// pet-monitoring-system\src\app\schedule\add\page.tsx
+}
