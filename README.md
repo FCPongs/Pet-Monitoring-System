@@ -39,6 +39,10 @@ A full-stack web app that allows you to add, edit, view pets and vets. You can a
 
 ## Screenshots/GIFs
 *Note: The project is still in-progress so the UI is still not yet final.*
+- Adding Schedule to a pet
+
+![PMS 2](https://github.com/user-attachments/assets/5cb9f3ea-b280-4acd-83c7-3fbdeb6dea54)
+
 - Add Pet- View Pet (As group) - View Pet (Individually) - View Schedule
 
 ![PMS (1)](https://github.com/user-attachments/assets/a909e548-dc33-4394-97e0-4a0f22f41242)
