@@ -31,9 +31,9 @@ export default function PetsPage() {
             </div>
             {view === "Card" ?
                 (
-                    <div className="flex flex-col">
+                    <div className="flex flex-wrap">
                         {pet?.map(pets => (
-                            <div className="w-150 p-5" key={pets._id}>
+                            <div className="w-120 p-5" key={pets._id}>
                                 <PetCard id={String(pets._id)} name={pets.name} age={String(pets.age)} type={String(pets.animalType)} breed={String(pets.breed)} vet={
                                     typeof pets.vet === "object"
                                         ? pets.vet?.name

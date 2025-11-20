@@ -50,7 +50,7 @@ export default function AddPetForm() {
             const petData = await mutateAsync(data);
             console.log("Pet ID: " + petData._id);
             toast.success("Pet Successfully created");
-            route.push(`/pet/${petData._id}/viewPet`); // Redirect to specific pet page
+            route.push(`/pet/${petData._id}/viewPet`); 
         }
     }
 

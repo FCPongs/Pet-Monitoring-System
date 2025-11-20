@@ -28,7 +28,7 @@ export default function VetsPage() {
                 (
                     <div className="flex">
                         {data?.map((vets) => (
-                            <div className="w-150 p-5">
+                            <div key={vets._id} className="w-150 p-5">
                                 <VetCard name={String(vets.name)} doctor={String(vets.doctor)} location={String(vets.location)} />
                             </div>
                         ))}
