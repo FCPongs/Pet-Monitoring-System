@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <div className="flex flex-col gap-4 w-full h-[100vh] bg-blue-100 justify-center items-center">
+      <div className="flex flex-col gap-4 w-full h-[90vh] justify-center items-center">
         <div className="text-2xl font-bold">
           Pet Monitoring System
         </div>

@@ -6,6 +6,7 @@ import {
     NavigationMenuList,
     NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function NavBar() {
@@ -14,7 +15,11 @@ export default function NavBar() {
             <div className="flex items-center justify-between w-full px-4">
 
                 {/* Left - Logo */}
-                <div className="p-4">Logo</div>
+                <Link href={"/"}>
+                    <div className="p-1 mb-1.5">
+                        <Image className="object-contain" src="/images/logo.png" alt="Logo" width={80} height={80} />
+                    </div>
+                </Link>
 
                 {/* Center - Menu */}
                 <NavigationMenu className="!flex flex-1 justify-center">
@@ -31,10 +36,10 @@ export default function NavBar() {
                                                 href="/"
                                             >
                                                 <div className="mb-2 text-lg font-medium sm:mt-4">
-                                                    shadcn/ui
+                                                    Pet Monitoring System
                                                 </div>
                                                 <p className="text-muted-foreground text-sm leading-tight">
-                                                    Beautifully designed components built with Tailwind CSS.
+                                                    A full-stack web app to track pets' schedules, and activities, built with Next.js and MongoDB.
                                                 </p>
                                             </a>
                                         </NavigationMenuLink>
